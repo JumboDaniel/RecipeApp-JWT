@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 // database connection
 //mongoose connection
 const dbURI = 'mongodb://localhost/recipeapp';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 .then((result)=>console.log('connected')) 
 .catch((err) =>console.log(err));
 

@@ -8,14 +8,15 @@ const userSchema = new Schema ({
     },
     email:{
         type: String,
-        required: true,
+        required: [true, 'Input your email'],
         unique: true,
-        lowercase: true
+        lowercase: true,
+        // validate: [(val)=>{ }, 'Please enter a valid email']
     },  
     password:{
         type: String,
-        required: true,
-        minLength: 6
+        required: [true, 'Input your password'],
+        minlength: [6, 'Minimum password is 6 characters']
     }
 })
 
