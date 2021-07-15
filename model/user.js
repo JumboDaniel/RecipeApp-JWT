@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema =mongoose.Schema;
 const {isEmail} = require('validator')
-
+const bcrypt = require('bcrypt');
 const userSchema = new Schema ({
     firstname:{
         type: String,
@@ -24,5 +24,10 @@ const userSchema = new Schema ({
         minlength: [6, 'Minimum password is 6 characters']
     }
 })
-
+//Hash password using mongoose hooks
+userSchema.pre('save', async function (next) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt)
+    next()
+})
 module.exports = mongoose.model('user', userSchema)
