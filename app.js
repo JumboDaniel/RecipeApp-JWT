@@ -22,3 +22,14 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', (req, res) => res.render('smoothies'));
 app.use(authRoutes)
 app.listen(process.env.PORT || 4000)
+
+//cookies
+app.get('/setcookies', (req, res)=>{
+    res.setHeader('Set-Cookie', 'newUser = true')
+    res.setHeader('Set-Cookie', 'User = Emma')
+    res.send('you sent a new cookie')
+})
+
+app.get('/readcookies', (req, res)=>{
+
+})
