@@ -2,11 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes')
 const app = express();
+const cookieParser = require('cookie-parser');
 
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
-
+app.use(cookieParser())
 // view engine
 app.set('view engine', 'ejs');
 
@@ -24,12 +25,3 @@ app.use(authRoutes)
 app.listen(process.env.PORT || 4000)
 
 //cookies
-app.get('/setcookies', (req, res)=>{
-    res.setHeader('Set-Cookie', 'newUser = true')
-    res.setHeader('Set-Cookie', 'User = Emma')
-    res.send('you sent a new cookie')
-})
-
-app.get('/readcookies', (req, res)=>{
-
-})
