@@ -1,7 +1,7 @@
 <%- include('partials/header'); -%>
 
 <div>
-    <h2>Signup</h2>
+    <h2>Login</h2>
     <form id="Log in">
         <label for="email">Email</label>
         <input type="email" name="email" required>
@@ -17,7 +17,7 @@
     const passwordError = document.querySelector('.error.password')
     const emailError = document.querySelector('.error.email')
     const form = document.querySelector('form');
-    
+
     form.addEventListener('submit', async (e)=>{
         //reset form
         e.preventDefault();
@@ -38,12 +38,10 @@
             console.log(data)
             if (data.errors) {
                 passwordError.textContent = data.errors.password;
-                emailError.textContent = data.errors.email 
+                emailError.textContent = data.errors.email;
             }
-            if (data.user) {
-                location.assign('/login')
-            }
-        } catch (err) {
+        } 
+        catch (err) {
             console.log(err)
         }
     })

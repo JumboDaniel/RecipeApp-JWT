@@ -51,12 +51,12 @@ module.exports.signup_post = async (req, res)=>{
 }
 
 module.exports.login_post = async (req, res)=>{
-    const {name, email} = req.body;
+    const {email, password} = req.body;
     try {
-        const user = await User.login({email, password})
-        res.status(200).json({user: user._id})
+        const user = await User.login(email, password)
+        return res.status(200).json({user: user._id})
     } catch (error) {
-        res.status(400).json({})
+        return res.status(400).json({})
     }
     res.send('new login')
 }
