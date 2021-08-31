@@ -41,6 +41,6 @@ userSchema.statics.login = async function(email, password){
         }
         throw Error('Incorrect Password')
     }
-    throw Error('Incorrect User')
+    throw Error('Incorrect Email')
 }
 module.exports = mongoose.model('user', userSchema)
