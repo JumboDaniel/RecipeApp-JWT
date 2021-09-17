@@ -69,7 +69,6 @@ module.exports.login_post = async (req, res)=>{
         const errors = handleErrors(err)
         return res.status(400).json({errors})
     }
-    res.send('new login')
 }
 
 module.exports.logout_get = (req, res)=>{
